@@ -8,7 +8,8 @@ bin_PROGRAMS = \
 	test_sf \
 	test_input \
 	test_camera \
-	test_gps
+	test_gps \
+	test_csd
 
 test_audio_SOURCES = test_audio.c
 test_audio_CFLAGS = \
@@ -93,3 +94,12 @@ test_gps_LDFLAGS = -pthread
 test_gps_LDADD =  \
 	$(top_builddir)/common/libhybris-common.la \
 	$(top_builddir)/hardware/libhardware.la
+
+test_csd_SOURCES = test_csd.c
+test_csd_CFLAGS = \
+	-pthread \
+	-I$(top_srcdir)/include
+test_csd_LDFLAGS = -pthread
+test_csd_LDADD = \
+	-ldl \
+	$(top_builddir)/common/libhybris-common.la
